@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/s.css">
+    <style>
+        main{
+            width:100vw;
+            height:100vh;
+            min-width: 100vw;
+        }
+        body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+        #numri{
+            height:7px;
+            width:30px;
+            margin-top: 10px;
+            float:right;
+        }
+        #orari{
+            float:right;
+        }
+        #ora{
+            float:right;
+        }
+        #filmi{
+            display: flex;
+        }
+    #first{
+        float:left;
+    }
+    #second{
+        float:right;
+        margin-left: 70px;
+    }
+    #form{
+        width:110px;
+        display: inline-block;
+    }
+    #orari{
+        width:70px;
+    }
+    #wrapper2{
+        display: block;
+    }
+    .value:hover{
+background-color: blueu;
+    }
+    .value{
+        height:20px;
+    }
+    #movie{
+        margin-top: 0;
+
+    }
+    li{
+        color:black;
+    }
+
+*{
+    margin:0%;
+}
+#links{
+    margin:1.5em;
+    display:inline-flex;
+    padding:0px;
+    gap:20px;
+    margin-left:20px;
+}
+#navlinks{
+    display:inline-flex;
+    gap:20px;
+}
+#navlinks a:hover{
+    border:solid;
+    background-color: green;
+}
+a{
+    color:blue;
+}
+li a,
+li a:visited{
+    text-decoration: none;
+    text-align:center;
+    text-decoration: none;
+}
+li a:hover{
+    color:aqua;
+    
+}
+ol li{
+    margin:0;
+    padding: 0;
+}
+    </style>
+        </head>
+
+        <body>
+        <header>
+      </div>
+    <main  id="main">
+    <div class="login">
+      <h2 class="active"> Buy tickets </h2>
+      <form>
+        <input type="text" class="text" name="username">
+         <span>username</span>
+        <br>
+        <br>
+        <input type="password" class="text" name="password">
+        <span>password</span>
+        <br>
+        <div id="filmi">
+            <div id="first">
+    <label for="for">Zgjedh filmin:</label>
+        <select name="select1" id="form">
+       <option class="value" value="">teh top gun</option>
+       <option class="value" value="">Everything everywhere</option>
+       <option class="value" value="">Batman</option>    
+        </select>
+     </div>
+        <div id="second">
+        <label style="float:right;" for="ora">Zgjedh orarin</label>
+        <select name="ora" id="orari">
+<option class="value" value="">14:30</option>
+<option class="value" value="">17:00</option>
+<option class="value" value="">18:00</option>
+        </select>
+    </div>
+</div> 
+        <br><br>
+        
+        <hr>
+        <button class="signin">
+          Buy tickets
+        </button>
+      </form>
+    
+    </div>
+</div>
+</main>
+</body>
+</html>
