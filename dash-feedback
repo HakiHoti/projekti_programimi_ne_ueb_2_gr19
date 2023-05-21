@@ -1,0 +1,89 @@
+<?php
+ob_start();
+?>
+<?php include "php/dbconnection.php"
+?>
+
+<?php include "header-dash.php"?>
+<style>
+
+    table, th, td {
+  border: 1px solid;
+}
+table{
+    margin-left:500px;
+}
+h1{
+    margin-left:500px;
+}
+.sub-menu {
+    display: none;
+  }
+  .dropdown.active .sub-menu {
+    display: block;
+  }
+  .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.sub-menu a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+}
+.sub-menu a:hover {
+  background-color: #f0f0f0;
+}
+</style>
+<h1>WELCOME TO THE FEEDBACK PAGE</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Feedback ID</th>
+      <th> feedback</th>
+      <th>name</th>
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
+
+$query="SELECT * FROM feedback";
+$fetchdata=mysqli_query($connection,$query);
+if(!$fetchdata){
+  die("query is not correct");
+}
+$final="";
+while($row=mysqli_fetch_assoc($fetchdata)){
+
+?>
+
+    <?php
+    $id=$row['ID'];
+  $final.="<tr>"."<td>".$row['ID']."</td>";  
+  $final.="<td>".$row['feedback']."</td>";
+  $final.="<td>".$row['name']."</td>";
+  $final.="<td>".$row['email']."</td></tr>";
+}
+echo $final;
+    ?>
+      
+    <!--   <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+      <td>Data 3</td>
+      <td>Data 3</td>
+    </tr>
+    <tr>
+      <td>Data 4</td>
+      <td>Data 5</td>
+      <td>Data 6</td>
+      <td>Data 3</td>
+    </tr>Add more table rows as needed -->
+  </tbody>
+</table>
+  </div>
