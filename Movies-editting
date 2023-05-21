@@ -1,0 +1,83 @@
+<?php
+include "header-dash.php";
+include "php/dbconnection.php";
+include "php/functions.php"
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container{
+            margin-left:400px;
+        }
+        .sub-menu {
+    display: none;
+  }
+  .dropdown.active .sub-menu {
+    display: block;
+  }
+  .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.sub-menu a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+}
+.sub-menu a:hover {
+  background-color: #f0f0f0;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Movie Form</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Movie Title:</label>
+                <input type="text" class="form-control" name="title" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Movie Genre:</label>
+                <input type="text" class="form-control" name="genre" id="genre" required>
+            </div>
+            <div class="form-group">
+                <label for="file">Upload Movie File:</label>
+                <input type="file" class="form-control-file" name="file" id="file" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" class="btn btn-primary" value="publish movie">
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <?php   if(isset($_POST['submit'])){
+$tittle=$_POST['title'];
+$genre=$_POST['genre'];
+$post_image=$_FILES['file']['name'];
+$post_temp_file=$_FILES['file']['tmp_name'];
+move_uploaded_file($post_temp_file,"C:/xampp/htdocs/UEB/images/'$post_image'");
+$query = "INSERT INTO movies_post (tmovie_tittle, movies_kind, image_url) VALUES ('$tittle', '$genre', '$post_image')";
+$fetch=mysqli_query($connection,$query);
+    if(!$fetch){
+        die("fetching data failed");
+    }
+}
+else{
+}
+?>
+</body>
+</html>
