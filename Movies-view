@@ -1,0 +1,220 @@
+<?php include "php/dbconnection.php"?>
+<?php ob_start()?>
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>  </title>
+    <link rel="stylesheet" href="css/dash2.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+.sub-menu {
+    display: none;
+  }
+  .dropdown.active .sub-menu {
+    display: block;
+  }
+  .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.sub-menu a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+}
+.sub-menu a:hover {
+  background-color: #f0f0f0;
+}
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  table{
+    margin-left:500px;
+  }
+</style>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">DASHBOARD</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="dashboard.php" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="Categories.php">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Categories</span>
+          </a>
+        </li>
+        <li>
+          <a href="team.php">
+            <i class='bx bx-list-ul'></i>
+            <span class="links_name"> Team </span>
+          </a>
+        </li>
+        <li>
+          <a href="dash-feedback.php">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Stock</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Total order</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Team</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-heart' ></i>
+            <span class="links_name">Favrorites</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+          <li class="dropdown">
+      <a href="#" class="dropdown-toggle">
+        <i class='bx bx-list-ul'></i>
+        <span class="links_name">Movies-dashboard</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="Movies-view.php">Movies-view</a></li>
+        <li><a href="Movies-editting.php">Movies-adding</a></li>
+      </ul>
+    </li>
+      </ul>
+  </div>
+  <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="profile-details">
+        <img src="images/profile.jpg" alt="">
+        <span class="admin_name">Prem Shahi</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+    </nav>
+    <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>URL</th>
+      <th>ZHANDRI</th>
+      <th>TITULLI</th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
+
+$query="SELECT * FROM movies_post";
+$fetchdata=mysqli_query($connection,$query);
+if(!$fetchdata){
+  die("query is not correct");
+}
+$final="";
+while($row=mysqli_fetch_assoc($fetchdata)){
+
+?>
+
+    <?php
+    $url=$row['image_url'];
+    $id=$row['movie_id'];
+  $final.="<tr>"."<td>".$row['movie_id']."</td>";  
+  $final.="<td><img width='100' height='50' class='img-responsive' src='images/$url'</td>";
+  $final.="<td>".$row['movies_kind']."</td>";
+  $final.="<td>".$row['tmovie_tittle']."</td>";
+  $final.="<td><a href='Movies-view.php?delete={$id}'>Delete</a></td>";
+  $final.="<td><a href='Editingmovies.php?edit={$id}'>Edit</a></td></tr>";
+}
+echo $final;
+    ?>
+      
+    <!--   <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+      <td>Data 3</td>
+      <td>Data 3</td>
+    </tr>
+    <tr>
+      <td>Data 4</td>
+      <td>Data 5</td>
+      <td>Data 6</td>
+      <td>Data 3</td>
+    </tr>Add more table rows as needed -->
+  </tbody>
+</table>
+  </div>
+  <?php
+  if(isset($_GET['delete'])){
+    $gid=$_GET['delete'];
+    $query="DELETE FROM movies_post where movie_id={$gid}";
+    $fetch=mysqli_query($connection,$query);
+    if(!$fetch){
+      die("fetching data from query failed");
+    }
+    else{
+ header("Location:Movies-view.php");
+    }
+  }
+  else{
+  
+  }
+  
+  ?>
+    <script>
+  const dropdownToggle = document.querySelector(".dropdown-toggle");
+  const dropdownMenu = document.querySelector(".sub-menu");
+
+  dropdownToggle.addEventListener("click", () => {
+    dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
+  });
+  </script>
+  </body>
