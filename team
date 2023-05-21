@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Section</title>
+    <link rel="stylesheet" href="css/team.css">
+    <link rel="stylesheet" href="css/dash2.css">
+    <style>
+        .sidebar{
+            margin-left:0;
+            left:0;
+        }
+        .sub-menu {
+    display: none;
+  }
+  .dropdown.active .sub-menu {
+    display: block;
+  }
+  .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.sub-menu a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+}
+.sub-menu a:hover {
+  background-color: #f0f0f0;
+}
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">DASHBOARD</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="dashboard.php" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="categories.php">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Categories</span>
+          </a>
+        </li>
+        <li>
+          <a href="team.php">
+            <i class='bx bx-list-ul'></i>
+            <span class="links_name"> Team </span>
+          </a>
+        </li>
+        <li>
+          <a href="dash-feedback.php">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Stock</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Total order</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Team</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-heart' ></i>
+            <span class="links_name">Favrorites</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+        <li class="dropdown">
+      <a href="#" class="dropdown-toggle">
+        <i class='bx bx-list-ul'></i>
+        <span class="links_name">Movies-dashboard</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="Movies-view.php">Movies-view</a></li>
+        <li><a href="Movies-editting.php">Movies-editing</a></li>
+      </ul>
+    </li>
+      </ul>
+  </div>
+
+    <div class="main-container">
+        <h2>Our Team</h2>
+        <hr>
+        <div class="members">
+            <div class="team-member">
+                <img src="images/gentriti.jpg">
+                <h4>Gentrit Ademi</h4>
+                <p>CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="images/festimi.jpg">
+                <h4>Festim krasiqi</h4>
+                <p>CTO</p>
+            </div>
+            <div class="team-member">
+                <img src="images/hekurani.jpg">
+                <h4>Hekuran kokolli</h4>
+                <p>CTO</p>
+            </div>
+            <div class="team-member">
+                <img src="images/HAKI.jpg">
+                <h4>Haki Hoti</h4>
+                <p>Co-founder</p>
+            </div>
+        </div>
+    </div>
+    <!-- Our Team Page design using HTML CSS by raju_webdev -->
+    <script>
+          const dropdownToggle = document.querySelector(".dropdown-toggle");
+  const dropdownMenu = document.querySelector(".sub-menu");
+
+  dropdownToggle.addEventListener("click", () => {
+    dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
+  });
+    </script>
+</body>
+</html>
